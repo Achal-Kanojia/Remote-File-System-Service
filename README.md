@@ -16,9 +16,8 @@ This RFS service application allows the client to perform the following five com
 ### 1. Client
 - Client.py: Contains the code for the client.
 - UploadFile.txt: The file used for testing the functionality of upd command.
-- dwdSample.txtplain: The file downloaded from the server to the client without any change.
-- dwdSample.txtreverse: The file downloaded from the server to the client with Transpose.
-- dwdSample.txtsubstitute: The file downloaded from the server to the client with Caesar Cipher.
+- dwdSample.txt: The file downloaded from the server to the client with using any of the crypto modes.
+
 ### 2. Server
 - Server.py: Contains the code for the server.
 - Sample.txt: The file used for testing the functionality of dwd command.
@@ -88,13 +87,14 @@ In this layer, Transmission Control Protocol (TCP) is used for exchanging the in
   ![image](https://user-images.githubusercontent.com/79503913/190487914-b2d00869-b60b-445f-862a-16aa67373c39.png) <br>
 - Plain <br>
   ![image](https://user-images.githubusercontent.com/79503913/190487776-89d2c002-3c65-452c-92ed-9fb0cec9f05c.png) <br>
-![image](https://user-images.githubusercontent.com/79503913/190487794-0998ecd3-1bee-4640-85b9-98566ba8eb56.png) <br>
+  ![image](https://user-images.githubusercontent.com/79503913/190687205-cd4d8ffa-f985-4060-89c4-ee06c0205760.png) <br>
+
 - Substitute <br>
   ![image](https://user-images.githubusercontent.com/79503913/190487954-74def1a5-4ff0-415d-9eb9-a77d3868ef7c.png) <br>
-![image](https://user-images.githubusercontent.com/79503913/190487964-c900ea1f-f64a-4ba5-baba-6487efd7ecba.png) <br>
+   ![image](https://user-images.githubusercontent.com/79503913/190687205-cd4d8ffa-f985-4060-89c4-ee06c0205760.png) <br>
 - Transpose <br>
 ![image](https://user-images.githubusercontent.com/79503913/190488028-33d27167-dd1f-486c-92c5-b85c3c4eaa34.png) <br>
-![image](https://user-images.githubusercontent.com/79503913/190488054-51a014ff-5e41-4a98-8333-57850f6d6469.png) <br>
+ ![image](https://user-images.githubusercontent.com/79503913/190687205-cd4d8ffa-f985-4060-89c4-ee06c0205760.png) <br>
 <br>
 
 **5. upd** <br>
