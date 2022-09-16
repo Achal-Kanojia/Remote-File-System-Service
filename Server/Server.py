@@ -1,21 +1,21 @@
 import socket, os
 from pathlib import Path
 
-def encrypt(text, s): 
+def cipher(text, s): 
     text = text.strip()
     result = "" 
     for i in range(len(text)): 
         char = text[i]
-        if (char == " "):
-            result += " "
-        elif (char.isnumeric()):
+        if (char.isnumeric()):
             temp = ord(str((int(char)+s)%10))
             result += chr(temp)
         elif (char.isupper()): 
             temp = (ord(char) + s-65) % 26 + 65
             result += chr((ord(char) + s-65) % 26 + 65) 
-        else:
+        elif (char.islower()):
             result += chr((ord(char) + s - 97) % 26 + 97)
+        else:
+            result += char
     return result 
 
 def reverse(text): 
@@ -65,11 +65,9 @@ def server_program():
                         if (data[2] == "plain"):
                             conn.sendall(word)
                         elif (data[2] == "substitute"):
-                            conn.sendall(encrypt(word.decode(), 2).encode())
-                            conn.sendall("\n".encode())
+                            conn.sendall(cipher(word.decode(), 2).encode())
                         elif (data[2] == "reverse"):
                             conn.sendall(reverse(word.decode()).encode())
-                            conn.sendall("\n".encode())
             except:
                 conn.send("NOK".encode())
         elif (data[0] == 'upd'):

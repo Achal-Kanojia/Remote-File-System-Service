@@ -1,5 +1,30 @@
 import socket, os
 
+def cipher(text, s): 
+    text = text.strip()
+    result = "" 
+    for i in range(len(text)): 
+        char = text[i]
+        if (char.isnumeric()):
+            temp = ord(str((int(char)+s)%10))
+            result += chr(temp)
+        elif (char.isupper()): 
+            temp = (ord(char) + s-65) % 26 + 65
+            result += chr((ord(char) + s-65) % 26 + 65) 
+        elif (char.islower()):
+            result += chr((ord(char) + s - 97) % 26 + 97)
+        else:
+            result += char
+    return result 
+
+def reverse(text): 
+    new_data = ""
+    for word in text.split():
+        rev_word = word[::-1]
+        new_data += rev_word
+        new_data += " "
+    return new_data
+
 def cwd(cmd):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((host, port))
@@ -40,12 +65,17 @@ def dwd(cmd):
     cmd = cmd.split(" ")
     print("Status:", status)
     if (status == "OK"):
-        with open("dwd"+cmd[1]+cmd[2], 'wb') as file_to_write:
+        with open("dwd"+cmd[1], 'wb') as file_to_write:
             while True:
                 data = client_socket.recv(1024)
                 if not data:
                     break
-                file_to_write.write(data)
+                if (cmd[2] == 'plain'):
+                    file_to_write.write(data)
+                elif (cmd[2] == 'substitute'):
+                    file_to_write.write(cipher(data.decode(), -2).encode())
+                elif (cmd[2] == 'reverse'):
+                    file_to_write.write(reverse(data.decode()).encode())
             file_to_write.close()
     client_socket.close()
 
